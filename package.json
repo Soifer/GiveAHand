@@ -87,6 +87,7 @@
     "babel-polyfill": "^6.20.0",
     "jsx-ast-utils": "^1.4.0",
     "prop-types": "^15.5.10",
+    "react-bootstrap": "^0.31.0",
     "toastr": "^2.1.2"
   },
   "keywords": [

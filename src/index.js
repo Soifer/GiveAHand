@@ -4,5 +4,5 @@ import {Router, Route, browserHistory} from 'react-router';
 import routes from './routes';
 
 render(
-  <Router history={browserHistory} routes={routes}/>, document.getElementById("content")
+  <Router history={browserHistory} routes={routes}/>, document.getElementById("content"),console.log("bootstrap")
   );
