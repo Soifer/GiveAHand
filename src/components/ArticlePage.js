@@ -4,13 +4,21 @@ import PropTypes from 'prop-types';
 class ArticlePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+
+        };
     }
     render() {
         return (
-            <div>Article Page</div>
+            <div>
+                <span>{this.props.article.Content}</span>
+            </div>
         );
     }
 }
+
+ArticlePage.PropTypes = {
+    article: PropTypes.object.isRequired
+};
 
 export default ArticlePage;

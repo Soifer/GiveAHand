@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import {Router, Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import MainPage from './components/MainPage';
-import ArticlePage from './components/ArrticlePage';
+import ArticlePage from './components/ArticlePage';
 
 export default(
     <Route path="/" component={App}>
