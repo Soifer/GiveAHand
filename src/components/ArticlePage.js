@@ -17,7 +17,7 @@ class ArticlePage extends React.Component {
     }
 }
 
-ArticlePage.PropTypes = {
+ArticlePage.propTypes = {
     article: PropTypes.object.isRequired
 };
 

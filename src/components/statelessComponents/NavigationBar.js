@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import ModalBs from '../bootstrapComponents/ModalBs';
+import {Link, withRouter} from 'react-router';
 
 class NavigationBar extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props,context) {
+        super(props,context);
         this.state = {};
+        this.onSelect = this.onSelect.bind(this);
+    }
+
+    onSelect(target){
+        console.log('target',target);
+        this.context.router.push("/" + target);
     }
 
     render() {
@@ -15,13 +22,14 @@ class NavigationBar extends React.Component {
                 <Navbar inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href="#">React-Bootstrap</a>
+                            <Link to="/" >Main</Link>
                         </Navbar.Brand>
                         <Navbar.Toggle/>
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav>
-                            <NavItem eventKey={1} href="#">Link</NavItem>
+                            
+                            <NavItem onSelect={this.onSelect} eventKey={'register'} href="" >Register</NavItem>
                             <NavItem eventKey={2} href="#">Link</NavItem>
                             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                                 <MenuItem eventKey={3.1}>Action</MenuItem>
@@ -42,4 +50,7 @@ class NavigationBar extends React.Component {
     }
 }
 
+NavigationBar.contextTypes ={
+    router: PropTypes.object
+};
 export default NavigationBar;

@@ -5,10 +5,11 @@ import {Router, Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import MainPage from './components/MainPage';
 import ArticlePage from './components/ArticlePage';
+import RegisterPage from './components/RegisterPge';
 
 export default(
     <Route path="/" component={App}>
         <IndexRoute component={MainPage}/>
-        <Route path="about" component={ArticlePage}/>
+        <Route path="register" component={RegisterPage}/>
     </Route>
 );
