@@ -5,7 +5,7 @@ import {Router, Route, IndexRoute} from 'react-router';
 import App from './components/App';
 import MainPage from './components/MainPage';
 import ArticlePage from './components/ArticlePage';
-import RegisterPage from './components/RegisterPge';
+import RegisterPage from './components/RegisterPage';
 
 export default(
     <Route path="/" component={App}>

@@ -8,11 +8,10 @@ class NavigationBar extends React.Component {
     constructor(props,context) {
         super(props,context);
         this.state = {};
-        this.onSelect = this.onSelect.bind(this);
+        this.redirect = this.redirect.bind(this);
     }
 
-    onSelect(target){
-        console.log('target',target);
+    redirect(target){
         this.context.router.push("/" + target);
     }
 
@@ -27,9 +26,8 @@ class NavigationBar extends React.Component {
                         <Navbar.Toggle/>
                     </Navbar.Header>
                     <Navbar.Collapse>
-                        <Nav>
-                            
-                            <NavItem onSelect={this.onSelect} eventKey={'register'} href="" >Register</NavItem>
+                        <Nav>                            
+                            <NavItem onSelect={this.redirect} eventKey={'register'} href="" >Register</NavItem>
                             <NavItem eventKey={2} href="#">Link</NavItem>
                             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
                                 <MenuItem eventKey={3.1}>Action</MenuItem>

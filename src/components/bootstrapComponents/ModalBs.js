@@ -30,7 +30,7 @@ class ModalBs extends React.Component {
             <Tooltip id="modal-tooltip">
                 wow.
             </Tooltip>
-        )
+        );
         return (
             <div>
                 <Button bsStyle="info" bsSize="small" onClick={this.open}>
