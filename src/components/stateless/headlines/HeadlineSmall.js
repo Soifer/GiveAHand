@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 const HeadlineSmall = ({headline}) => {
-    let bgColor = {
+    let stripeColor = {
         background:headline.StripeColor
     };
     let clear = {
@@ -21,7 +21,7 @@ const HeadlineSmall = ({headline}) => {
                             </div>
                         </div>
                         <div className="rsvp_money_article_content">
-                            <div className="rsvp_feed_cat_color rsvp_cat2" style={bgColor}/>
+                            <div className="rsvp_feed_cat_color rsvp_cat2" style={stripeColor}/>
                             <div style={clear} />
                             <div className="rsvp_money_article_title oedooprom">{headline.Title}</div>
                         </div>
