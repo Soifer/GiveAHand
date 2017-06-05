@@ -16,7 +16,6 @@ class MainFeed extends React.Component {
     componentDidMount() {
         let data = GetData();
         data.then((feed)=>{
-            console.log("data",feed);
             this.setState({
                 list: feed
             });

@@ -2,7 +2,6 @@ import dal, {fetchProps} from './dal';
 
 function GetData() {
    let props = Object.create(fetchProps.prototype);
-   console.log('props:',props);
    props.url = 'http://localhost:8000/api/mainTopFour';
    return dal.fetch(props);
 }

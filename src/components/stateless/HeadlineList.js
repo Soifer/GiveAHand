@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import HeadlineMain from '../stateless/headlines/HeadlineMain';
-import HeadlineBig from '../stateless/headlines/HeadlineBig';
-import HeadlineSmall from '../stateless/headlines/HeadlineSmall';
-
+// import HeadlineMain from '../stateless/headlines/HeadlineMain';
+// import HeadlineBig from '../stateless/headlines/HeadlineBig';
+ //import HeadlineSmall from '../stateless/headlines/HeadlineSmall';
+const headlines = require('./headlines');
 const HeadlineList = ({headlineList}) => {
-    
-    return (       
+
+    return (
         <div>
-            {headlineList.map((item) => {
-                switch (item.DisplaySigns) {
-                    case 10: return <HeadlineBig key={item.DestArticleID + item.LastModifyDate} headline={item}/>;                        
-                    case 2:  return <HeadlineMain key={item.DestArticleID + item.LastModifyDate} headline={item}/>;                        
-                    default: return <HeadlineSmall key={item.DestArticleID + item.LastModifyDate} headline={item}/>;                        
-                  }
-              })
-            }
+            {headlineList.map((item,index) => {
+                const arr = {
+                     headline: item,
+                     key: item.DestArticleID + index                   
+                };
+                if(item.DisplaySigns === 0){
+                  return  React.createElement( headlines[item.DisplaySigns].component, arr );            
+                }
+            })
+}
         </div>
     );
 };

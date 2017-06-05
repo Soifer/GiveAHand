@@ -16,7 +16,6 @@ class MainTopFour extends React.Component {
     componentDidMount() {
         let data = GetData();
         data.then((topFour)=>{
-            console.log("data",topFour);
             this.setState({
                 list: topFour
             });
