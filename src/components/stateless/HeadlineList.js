@@ -10,9 +10,9 @@ const HeadlineList = ({headlineList}) => {
         <div>
             {headlineList.map((item) => {
                 switch (item.DisplaySigns) {
-                    case 10: return <HeadlineBig key={item.DestArticleID} headline={item}/>;                        
-                    case 2:  return <HeadlineMain key={item.DestArticleID} headline={item}/>;                        
-                    default: return <HeadlineSmall key={item.DestArticleID} headline={item}/>;                        
+                    case 10: return <HeadlineBig key={item.DestArticleID + item.LastModifyDate} headline={item}/>;                        
+                    case 2:  return <HeadlineMain key={item.DestArticleID + item.LastModifyDate} headline={item}/>;                        
+                    default: return <HeadlineSmall key={item.DestArticleID + item.LastModifyDate} headline={item}/>;                        
                   }
               })
             }

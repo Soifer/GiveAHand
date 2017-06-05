@@ -12,7 +12,7 @@ class MainPage extends React.Component {
         return (
             <div>
                 <MainTopFour/>
-                {/*<MainFeed/> */}
+                <MainFeed/> 
             </div>
         );
     }

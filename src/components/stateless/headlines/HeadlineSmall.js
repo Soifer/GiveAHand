@@ -15,7 +15,7 @@ const HeadlineSmall = ({headline}) => {
                 <li className="rsvp_money_article">
                     <a >
                         <div className="rsvp_play_wrapper">
-                            <img src="loadingUrl" alt={headline.MediaStockImageAlt} />
+                            <img src="/src/assets/Images/preload_640-360.png" alt={headline.MediaStockImageAlt} />
                             <div className="rsvp_icon_play_outer" >
                                 <div className="rsvp_icon_play"/>
                             </div>

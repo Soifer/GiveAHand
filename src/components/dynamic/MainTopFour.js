@@ -33,7 +33,3 @@ class MainTopFour extends React.Component {
 }
 
 export default MainTopFour;
-
-                // {this.state.list.map((item)=>{
-                    
-                // })}
