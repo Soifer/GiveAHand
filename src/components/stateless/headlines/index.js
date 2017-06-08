@@ -8,14 +8,16 @@ import HeadlineOuterLnk from './HeadlineOuterLnk';
 import HeadlinePair from './HeadlinePair';
 import HeadlineSmall from './HeadlineSmall';
 
+
 module.exports = {
-    // HeadlineMain : HeadlineMain,
-    // HeadlineBig : HeadlineBig,
-    // HeadlineAd : HeadlineBig,
-    // HeadlineAdsecond : HeadlineAdsecond,
-    // HeadlineAlert : HeadlineAlert,
-    // HeadlineBase : HeadlineBase,
-    // HeadlineOuterLnk : HeadlineOuterLnk,
-    // HeadlinePair : HeadlinePair,
-    0 : {component:HeadlineSmall, type:'HeadlineSmall'},
+     0 : HeadlineSmall,
+     1 : HeadlineSmall,
+     3 : HeadlineSmall,
+     4 : HeadlineSmall,
+     5 : HeadlineSmall,
+     6 : HeadlineAlert,
+     7 : HeadlineSmall,
+     8 : HeadlineAd,
+     9 : HeadlinePair,
+     10 : HeadlineBig
 };
