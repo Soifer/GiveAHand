@@ -15,6 +15,6 @@ export default(
         <Route path="article/:id" component={ArticlePage}/>
         <Route path="section" component={SectionPage}/>
         <Route path="category" component={CategoryPage}/>
-        {/*<Route path="talkback" component={TalkbackPage}/>*/}
+        <Route path="talkback" component={TalkbackPage}/>
     </Route>
 );
