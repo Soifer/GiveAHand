@@ -1,10 +1,9 @@
 import dal, {fetchProps} from './dal';
 
-function GetArticles() {
+function GetArticle(id) {
    let props = Object.create(fetchProps.prototype);
-   console.log('props:',props);
-   props.url = 'http://api-dev.nana10.co.il/Epg/getall';
+   props.url = 'http://localhost:8000/api/article/' + id;
    return dal.fetch(props);
 }
 
-export default GetArticles;
+export default GetArticle;
