@@ -11,9 +11,9 @@ import CategoryPage from './components/pages/CategoryPage';
 export default(
     <Route path="/" component={App}>
         <IndexRoute component={MainPage}/>
-        <Route path="article" component={ArticlePage}/>
+        <Route path="article/:id" component={ArticlePage}/>
         <Route path="section" component={SectionPage}/>
         <Route path="category" component={CategoryPage}/>
-        <Route path="talkback" component={TalkbackPage}/>
+        {/*<Route path="talkback" component={TalkbackPage}/>*/}
     </Route>
 );

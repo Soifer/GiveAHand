@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Article from './../dynamic/Article';
 
-class ArticlePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-    render() {
-        return (
-            <div>Article Page</div>
-        );
-    }
-}
+const ArticlePage = (props) => (
+  <div>
+    <Article id={props.params.id}/>
+  </div>
+);
+
+ArticlePage.propTypes = {
+    params: PropTypes.object
+};
 
 export default ArticlePage;
