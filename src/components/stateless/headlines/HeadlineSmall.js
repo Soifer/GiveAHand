@@ -10,8 +10,7 @@ const HeadlineSmall = ({headline}) => {
         clear: 'both'
     };
     return (
-        <div>
-            <h1>{headline.Title}</h1>
+        <div>           
             <ul className="rsvp_secondary_lisiting">
                 <li className="rsvp_money_article">
                     <Link to={"/" + headline.DestArticleID}>
