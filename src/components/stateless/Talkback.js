@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {alert} from 'bootstrap-css';
+import ModalBs from '../stateless/ui/Modal';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FormButton from '../stateless/ui/FormButton';
+
 
 const Talkback = ({posts}) => {
     return (
@@ -17,10 +18,8 @@ const Talkback = ({posts}) => {
                 }}
                     className="alert alert-warning"/>
             </div>)
-}
-            <MuiThemeProvider>
-                <FormButton label="Default"/>
-            </MuiThemeProvider>
+            }
+            <ModalBs/>
         </div>
     );
 };

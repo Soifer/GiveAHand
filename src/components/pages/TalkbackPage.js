@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import GetData from '../../services/talkbackService';
 import Talkback from '../stateless/Talkback';
 
-
 class TalkbackPage extends React.Component {
     constructor(props) {
         super(props);
@@ -25,8 +24,9 @@ class TalkbackPage extends React.Component {
 
     render() {
         return (
-            <div>
-               <Talkback posts={this.state.posts}/>
+            <div className="container-fluid" >
+
+               <Talkback posts={this.state.posts}/>           
             </div>
         );
     }
