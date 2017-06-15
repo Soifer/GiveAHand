@@ -25,7 +25,6 @@ class TalkbackPage extends React.Component {
     render() {
         return (
             <div className="container-fluid" >
-
                <Talkback posts={this.state.posts}/>           
             </div>
         );

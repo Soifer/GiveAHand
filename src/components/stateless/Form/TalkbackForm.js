@@ -4,7 +4,7 @@ import TextInput from './TextInput';
 import TextArea from './TextArea';
 
 const TbForm = ({
-    course,
+    talkback,
     allAuthors,
     onSave,
     onChange,
@@ -17,17 +17,17 @@ const TbForm = ({
             <TextInput
                 name="title"
                 label="Title"
-                //value={course.title}
+                value={talkback.title}
                 onChange={onChange}
-                //error={errors.title}
+                error={errors.title}
                 />
 
             <TextArea
                 name="text"
                 label="Text"
-               // value={course.category}
+                value={talkback.text}
                 onChange={onChange}
-               // error={errors.category}
+                error={errors.text}
                />
 
             <input
@@ -43,7 +43,7 @@ const TbForm = ({
 };
 
 TbForm.propTypes = {
-    course: React.PropTypes.object,
+    talkback: React.PropTypes.object,
     allAuthors: React.PropTypes.array,
     onSave: React.PropTypes.func,
     onChange: React.PropTypes.func,

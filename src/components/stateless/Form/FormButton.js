@@ -17,7 +17,6 @@ const FormButton = ({click}) => {
                 <ContentAdd/>
             </FloatingActionButton>
         </div>
-
     );
 };
 
