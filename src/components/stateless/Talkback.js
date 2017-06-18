@@ -16,7 +16,7 @@ const Talkback = ({posts}) => {
                         <span className="label label-danger pull-left">{item.Depth}</span>
                         <h3 className="panel-title">Panel title</h3>
                     </div>
-                    <div style={style} className="panel-footer">{item.MessageBody}r</div>
+                    <div style={style} className="panel-footer">{item.MessageBody}</div>
                 </div>
             </div>)}
             <ModalBs/>

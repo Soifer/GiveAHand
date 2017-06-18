@@ -11,20 +11,28 @@ class ModalBs extends React.Component {
         super(props);
         this.state = {
             showModal: false,
-            talkback:{
-                text:'',
-                title:''
+            talkback: {
+                text: '',
+                title: ''
             },
-            errors:{
-                text:'',
-                title:''
+            errors: {
+                text: '',
+                title: ''
             },
-            saving:false
+            visibility: "hidden"
         };
-        this.updateTalkbackState = this.updateTalkbackState.bind(this);
-        this.saveTalkback = this.saveTalkback.bind(this);
-        this.close = this.close.bind(this);
-        this.open = this.open.bind(this);
+        this.updateTalkbackState = this
+            .updateTalkbackState
+            .bind(this);
+        this.saveTalkback = this
+            .saveTalkback
+            .bind(this);
+        this.close = this
+            .close
+            .bind(this);
+        this.open = this
+            .open
+            .bind(this);
     }
     close() {
         this.setState({showModal: false});
@@ -35,39 +43,63 @@ class ModalBs extends React.Component {
         this.setState({showModal: true});
     }
 
-    updateTalkbackState(event){
+    updateTalkbackState(event) {
         const field = event.target.name;
         let talkback = this.state.talkback;
         talkback[field] = event.target.value;
-        this.setState({talkback: talkback});
-        console.log("talkback",talkback);
+        this.setState({
+            talkback: talkback,
+            errors: {
+                text: '',
+                title: ''
+            }
+        });
+        console.log("talkback", talkback);
     }
-    
-    talkbackFormIsValid(){
+
+    talkbackFormIsValid() {
         let formIsValid = true;
+        this.setState({visibility: "visible"});
         let errors = {};
-        if(this.state.talkback.title.length < 5){
+        if (this.state.talkback.title.length < 5) {
             errors.title = 'title must be at least 5 characters.';
             formIsValid = false;
+            this.setState({visibility: "hidden"});
             console.log('form error');
         }
-        if(this.state.talkback.text.length < 1){
-            errors.text = "text area can't be empti";
+        if (this.state.talkback.text.length < 1) {
+            errors.text = "text area can't be empty";
             formIsValid = false;
+            this.setState({visibility: "hidden"});
             console.log('form error');
         }
         this.setState({errors: errors});
         return formIsValid;
     }
 
-    saveTalkback(event){
+    saveTalkback(event) {
+        console.log("onsave");
         event.preventDefault();
-        if (!this.talkbackFormIsValid()){
-            return;
-        }
-        console.log("saving 2");
-        toastr.success("saved!");
 
+        let myFirstPromise = new Promise((resolve, reject) => {
+            if (!this.talkbackFormIsValid()) {
+                reject("validate error");
+            } else {
+                let that = this;
+                console.log("promise success");
+                setTimeout(function () {
+                    that.setState({visibility: "hidden"});
+                    resolve("success!!!");
+                }, 4000);                
+            }
+        });
+
+        myFirstPromise.then((result) => {
+            toastr.success("saved!");
+        }).catch((err) => {
+            toastr.error("saved!");
+            console.log("errror:", err);
+        });
         // saveCourse(this.state.talkback)
     }
 
@@ -79,11 +111,11 @@ class ModalBs extends React.Component {
         );
         const tooltip = (
             <Tooltip id="modal-tooltip">
-              tooltip
+                tooltip
             </Tooltip>
         );
-        const modalStyle ={
-            direction:'ltr'
+        const modalStyle = {
+            direction: 'ltr'
         };
         return (
             <div>
@@ -95,12 +127,12 @@ class ModalBs extends React.Component {
                         <Modal.Title>New Talkback</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                       <TbForm
-                          talkback={this.state.talkback}
-                          onChange={this.updateTalkbackState}
-                          onSave={this.saveTalkback}
-                          errors={this.state.errors}
-                       />
+                        <TbForm
+                            talkback={this.state.talkback}
+                            onChange={this.updateTalkbackState}
+                            onSave={this.saveTalkback}
+                            errors={this.state.errors}
+                            visibility={this.state.visibility}/>
                     </Modal.Body>
                 </Modal>
             </div>
@@ -109,35 +141,3 @@ class ModalBs extends React.Component {
 }
 
 export default ModalBs;
-
-
-
-
-
-
-
-
-
-                        // <h4>Text in a modal</h4>
-                        // <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-                        // <h4>Popover in a modal</h4>
-                        // <p>there is a
-                        //     <OverlayTrigger overlay={popover}>
-                        //         <a href="#">popover</a>
-                        //     </OverlayTrigger>
-                        //     here</p>
-
-                        // <h4>Tooltips in a modal</h4>
-                        // <p>there is a
-                        //     <OverlayTrigger overlay={tooltip}>
-                        //         <a href="#">tooltip</a>
-                        //     </OverlayTrigger>
-                        //     here</p>
-
-                        // <hr/>
-
-                        // <h4>Overflowing text to show scroll behavior</h4>
-                        // <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                        //     facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                        //     vestibulum at eros.</p>
