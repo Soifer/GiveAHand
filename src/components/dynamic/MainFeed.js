@@ -24,7 +24,7 @@ class MainFeed extends React.Component {
 
     render() {
         return (
-            <div>
+            <div>              
                <HeadLineList headlineList={this.state.list}/>
             </div>
         );

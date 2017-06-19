@@ -1,9 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {HtmlContentParser} from '../../tools/HtmlParser';
+
 const paragraphs = require('./paragraphs');
 
-const ParagraphList = ({paragraphList}) => {
-
+const ParagraphList = ({ paragraphList }) => {
+    let start = true;
+    let parserTs = HtmlContentParser.getInstance();
+   
+    parserTs.reset();
+    parserTs.setLength(paragraphList.length);
     return (
         <div>
             {paragraphList.map((item, index) => {
@@ -14,7 +20,7 @@ const ParagraphList = ({paragraphList}) => {
 
                 return React.createElement(paragraphs.default, arr);
             })
-}
+            }
         </div>
     );
 };

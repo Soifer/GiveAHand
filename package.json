@@ -86,7 +86,10 @@
   "dependencies": {
     "babel-polyfill": "^6.20.0",
     "jsx-ast-utils": "^1.4.0",
+    "material-ui": "^0.18.3",
     "prop-types": "^15.5.10",
+    "react-bootstrap": "^0.31.0",
+    "react-tap-event-plugin": "^2.0.1",
     "toastr": "^2.1.2"
   },
   "keywords": [
