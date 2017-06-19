@@ -7,6 +7,7 @@ import MainPage from './components/pages/MainPage';
 import ArticlePage from './components/pages/ArticlePage';
 import SectionPage from './components/pages/SectionPage';
 import CategoryPage from './components/pages/CategoryPage';
+import TalkbackPage from './components/pages/TalkbackPage';
 import LoginPage from './components/pages/LoginPage';
 import {Extensions} from './tools/Extensions';
 
@@ -25,6 +26,7 @@ export default (
         <Route path="section" component={SectionPage} />
         <Route path="category" component={CategoryPage} />
         <Route path="login" component={LoginPage} />
+         <Route path="talkback/:id" component={TalkbackPage} />
         <Route path="/edit/" component={App} onEnter={requireAuth} >
             <IndexRoute component={MainPage} />
             <Route path="article/:id" component={ArticlePage} />
