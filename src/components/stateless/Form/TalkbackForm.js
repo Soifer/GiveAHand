@@ -12,12 +12,9 @@ const TbForm = ({
     allAuthors,
     onSave,
     onChange,
-    visibility,
-    errors
+    errors,
+    saving
 }) => {
-    let submitStyle = {
-        visibility: visibility
-    };
     return (
         <MuiThemeProvider>
             <form>
@@ -37,28 +34,14 @@ const TbForm = ({
                     error={errors.text}/>
                     <br/>
                 <FlatButton
-                     label="submit"
                      primary={true}
                      onClick={onSave}
-                     value={visibility
+                     label={saving
                      ? 'Saving...'
-                     : 'Save'}
+                     : 'SUBMIT'}
                   />
                    <br/>
-                   <div style={submitStyle}>
-                        <LinearProgress 
-                          mode="indeterminate"                         
-                         />
-                   </div>    
-                   
-                {/*<input
-                    type="submit"
-                    disabled={saving}
-                    value={saving
-                    ? 'Saving...'
-                    : 'Save'}
-                    className="btn btn-primary"
-                    onClick={onSave}/>*/}
+                   {saving && <LinearProgress mode="indeterminate" />}
             </form>
         </MuiThemeProvider>
     );
@@ -69,8 +52,8 @@ TbForm.propTypes = {
     allAuthors: React.PropTypes.array,
     onSave: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    visibility: React.PropTypes.string,
-    errors: React.PropTypes.object
+    errors: React.PropTypes.object,
+    saving: React.PropTypes.bool
 };
 
 export default TbForm;
