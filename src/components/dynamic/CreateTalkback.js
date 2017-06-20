@@ -93,13 +93,19 @@ class CreateTalkback extends React.Component {
                 setTimeout(function () {
                     that.setState({saving: false});
                     resolve("success!!!");
-                }, 1000);                
+                }, 4000);                
             }
         });
         myFirstPromise.then((result) => {           
-            let data = this.props.onSave(this.state.talkback);
-            this.close();
-            toastr.success("saved" + data);
+            this.props.onSave(this.state.talkback)
+            .then((result)=>{
+             toastr.success("saved on: " + result.response);
+             this.close();
+        }).catch((error)=>{
+             toastr.error("not saved because of: " + error);
+        });
+            
+            
         }).catch((err) => {
             toastr.error("not saved");
             console.log("errror:", err);

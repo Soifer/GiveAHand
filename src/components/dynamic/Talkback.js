@@ -22,9 +22,7 @@ class Talkback extends React.Component {
     }
 
     onSave(talkback) {
-        let data = PostData(talkback);
-        console.log('data talkback', data);
-        //return
+        return PostData(talkback);       
     }
 
     render() {
