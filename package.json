@@ -92,6 +92,7 @@
     "material-ui": "^0.18.3",
     "prop-types": "^15.5.10",
     "react-toastr": "^2.8.2",
+    "socket.io-client": "^2.0.3",
     "toastr": "^2.1.2"
   },
   "keywords": [

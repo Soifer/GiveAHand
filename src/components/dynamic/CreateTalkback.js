@@ -5,11 +5,16 @@ import FormButton from '../stateless/Form/FormButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TbForm from '../stateless/Form/TalkbackForm';
 import toastr from 'toastr';
+import io from 'socket.io-client';
+
+const socket = io("localhost:8000");
 
 class CreateTalkback extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            messages: [],
+            message: "",
             showModal: false,
             talkback: {
                 text: '',
@@ -21,6 +26,12 @@ class CreateTalkback extends React.Component {
             },
             saving: false
         };
+        let self = this;
+        socket.on('chat message', function (msg) {
+            toastr.success("server said: " + msg);
+            self.setState({message: msg});
+            self.addMessageToList();
+        });
         this.updateTalkbackState = this
             .updateTalkbackState
             .bind(this);
@@ -33,12 +44,18 @@ class CreateTalkback extends React.Component {
         this.open = this
             .open
             .bind(this);
+        this.onMessage = this
+            .onMessage
+            .bind(this);
+        this.onChangeMessage = this
+            .onChangeMessage
+            .bind(this);
     }
     close() {
         this.setState({
-            talkback:{
-                text:"",
-                title:""
+            talkback: {
+                text: "",
+                title: ""
             }
         });
         this.setState({showModal: false});
@@ -93,24 +110,43 @@ class CreateTalkback extends React.Component {
                 setTimeout(function () {
                     that.setState({saving: false});
                     resolve("success!!!");
-                }, 4000);                
+                }, 4000);
             }
         });
-        myFirstPromise.then((result) => {           
-            this.props.onSave(this.state.talkback)
-            .then((result)=>{
-             toastr.success("saved on: " + result.response);
-             this.close();
-        }).catch((error)=>{
-             toastr.error("not saved because of: " + error);
-        });
-            
-            
+        myFirstPromise.then((result) => {
+            this
+                .props
+                .onSave(this.state.talkback)
+                .then((result) => {
+                    toastr.success("saved on: " + result.response);
+                    this.close();
+                })
+                .catch((error) => {
+                    toastr.error("not saved because of: " + error);
+                });
+
         }).catch((err) => {
             toastr.error("not saved");
             console.log("errror:", err);
         });
         // saveCourse(this.state.talkback)
+    }
+
+    addMessageToList() {
+        this.setState({
+            messages: this
+                .state
+                .messages
+                .concat(this.state.message)
+        });
+    }
+    onMessage() {
+        //this.addMessageToList();
+        socket.emit('chat message', this.state.message);
+    }
+    onChangeMessage(event) {
+        this.setState({message: event.target.value});
+        console.log("message:", event.target.value);
     }
 
     render() {
@@ -128,25 +164,29 @@ class CreateTalkback extends React.Component {
             direction: 'ltr'
         };
         return (
-            <div>
-                <MuiThemeProvider>
+            <MuiThemeProvider>
+                <div>
                     <FormButton click={this.open}/>
-                </MuiThemeProvider>
-                <Modal style={modalStyle} show={this.state.showModal} onHide={this.close}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>New Talkback</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <TbForm
-                            talkback={this.state.talkback}
-                            onChange={this.updateTalkbackState}
-                            onSave={this.saveTalkback}
-                            errors={this.state.errors}
-                            visibility={this.state.visibility}
-                            saving={this.state.saving}/>
-                    </Modal.Body>
-                </Modal>
-            </div>
+                    <Modal style={modalStyle} show={this.state.showModal} onHide={this.close}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>New Talkback</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <TbForm
+                                talkback={this.state.talkback}
+                                onChange={this.updateTalkbackState}
+                                onSave={this.saveTalkback}
+                                errors={this.state.errors}
+                                visibility={this.state.visibility}
+                                saving={this.state.saving}
+                                sendMessage={this.onMessage}
+                                messages={this.state.messages}
+                                message={this.state.message}
+                                onChangeMessage={this.onChangeMessage}/>
+                        </Modal.Body>
+                    </Modal>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }

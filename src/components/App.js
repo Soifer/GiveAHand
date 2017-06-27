@@ -2,17 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-injectTapEventPlugin();
 
+injectTapEventPlugin();
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
         return (
             <MuiThemeProvider>
-                <div className="container-fluid">
-                    {this.props.children}
-                </div>
+                    <div className="container-fluid">
+                        {this.props.children}
+                    </div>
             </MuiThemeProvider>
         );
+
     }
 }
 
